@@ -1,0 +1,29 @@
+<html>
+<head>
+    <script type="text/javascript" src="jquery-1.3.2.js"></script>
+    <script type="text/javascript" src="jquery.jqlog-1.0.js"></script>
+    <script type="text/javascript" src="jquery.jqlog.console-1.0.js"></script>
+    <script type="text/javascript">
+        
+        (function($) {
+            $(document).ready(function() {
+                $.jqlog.log("Log entry");
+                $.jqlog.info("Information entry");
+                $.jqlog.warn("Warning entry");
+                $.jqlog.error("Error entry");
+                $("#Inner").log();
+            });
+        })(jQuery);
+        
+    </script>
+</head>
+<body>
+    <div id="Outer">
+        <div id="Inner">
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ac pretium erat. Nullam pretium, tortor vitae mattis vestibulum, arcu velit adipiscing sem, ut tincidunt metus ipsum quis purus. Aliquam in augue ac massa commodo blandit vel eu ipsum. Pellentesque vitae lorem nulla. Proin convallis ultricies mattis. Curabitur quam lacus, ultrices in bibendum ac, posuere ut mauris. Aliquam varius dolor et tortor lobortis adipiscing. Ut nibh enim, mattis in hendrerit id, vestibulum ut elit. Vestibulum feugiat, leo et ultricies accumsan, urna mi condimentum felis, ut cursus orci diam vel eros. Nam ornare, nulla nec porta viverra, diam elit vulputate orci, eget auctor est nibh tincidunt turpis. Etiam condimentum rhoncus luctus. Suspendisse feugiat lacinia risus id viverra.
+            </p>        
+        </div>
+    </div>
+</body>
+</html>
