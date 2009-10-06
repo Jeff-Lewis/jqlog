@@ -21,6 +21,11 @@
         version: "1.0",
         
         /*
+        Indicates whether or not logging is enabled.  Default is false.
+        */
+        enabled: false,
+        
+        /*
         Stores the currently registered log targets.  All log target objects must implement a 
         log target function that accepts a log entry object.        
         */
@@ -41,18 +46,25 @@
         */
         log: function(object, options) {
         
-            var entry = jQuery.extend({}, jQuery.jqlog.entryDefaults, {
-                timestamp: new Date(),
-                level: "debug",
-                message: object
-            }, options);
+            if (jQuery.jqlog.enabled) {
             
-            // Log the entry with each of the registered targets.
-            for(var target in jQuery.jqlog.targets) {
-                try {
-                    jQuery.jqlog.targets[target].log(entry);
-                } catch(err) {
-                    // Ignore any errors and carry on logging!
+                var entry = jQuery.extend({}, jQuery.jqlog.entryDefaults, {
+                    timestamp: new Date(),
+                    level: "debug",
+                    message: object
+                }, options);
+                
+                // Log the entry with each of the registered targets.
+                for(var t in jQuery.jqlog.targets) {
+                    var target = jQuery.jqlog.targets[t];
+                    if (target.log) {
+                        try {
+                            target.log(entry);
+                        } 
+                        catch(err) {
+                            // Ignore any errors and carry on logging!
+                        }
+                    }
                 }
             }
         },        

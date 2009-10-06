@@ -7,11 +7,19 @@
         
         (function($) {
             $(document).ready(function() {
+                $.jqlog.enabled = true;
                 $.jqlog.log("Log entry");
                 $.jqlog.info("Information entry");
                 $.jqlog.warn("Warning entry");
                 $.jqlog.error("Error entry");
                 $("#Inner").log();
+                
+                try {
+                    throw new Error("An exception occurred!");
+                }
+                catch(err) {
+                    $.jqlog.error(err);
+                }
             });
         })(jQuery);
         
