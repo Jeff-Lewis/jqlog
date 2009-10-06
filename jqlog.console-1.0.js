@@ -1,7 +1,7 @@
 /*
- * jQuery.jqlog 1.0
+ * jqlog.console 1.0
  *
- * A console log target for jqlog.
+ * A log target for the jqlog framework that uses the console object.
  *
  * Copyright © 2009 Paul Bevis.
  *
