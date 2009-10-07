@@ -2,7 +2,11 @@ Defines the log targets provided with jqlog.
 
 == Alert ==
 
+...
+
 == Console ==
+
+...
 
 == Creating your own log target ==
 
@@ -12,33 +16,10 @@ A log target should extend the `jqlog.targetDefaults` object.  This will mean th
 jQuery.extend({}, jQuery.jqlog.targetDefaults, { name: "target", ... });
 }}}
 
-To register your log target with jqlog you just need to add it to the targets array.  The array is indexed by log target name.  _Note that the order in which the targets are executed by jqlog is not guaranteed_.
-
-The following example shows how the alert log target (provided with jqlog just logs messages using the alert box) integrates with jqlog.
+To register your log target with jqlog you just need to add it to the targets array.  The array is indexed by log target name.  
 
 {{{
-(function($) {
-    jQuery.jqlog.targets["alert"] = jQuery.extend({}, jQuery.jqlog.targetDefaults, {
-    
-        /*
-        Target name.
-        */
-        name: "alert",        
-        
-        /* 
-        Target version.
-        */
-        version: "1.0",
-        
-        /*
-        Logs a entry using the alert window.
-        
-        Parameters:
-           entry -   The entry to log.
-        */        
-        log: function (entry) {
-            alert(entry.message);
-        }
-    });
-})(jQuery);
+jQuery.jqlog.targets["target"] = target;
 }}}
+
+_Note that the order in which the targets are executed by jqlog is not guaranteed_.
