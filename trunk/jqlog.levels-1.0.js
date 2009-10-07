@@ -32,7 +32,7 @@
             var settings = jQuery.extend({
                 level: "info"
             }, options);
-            jQuery.jqlog.log(object, settings);
+            this.log(object, settings);
         },
         
         /*
@@ -52,7 +52,7 @@
             var settings = jQuery.extend({
                 level: "warn"
             }, options);
-            jQuery.jqlog.log(object, settings);
+            this.log(object, settings);
         },
 
         /*
@@ -72,7 +72,7 @@
             var settings = jQuery.extend({
                 level: "error"
             }, options);
-            jQuery.jqlog.log(object, settings);
+            this.log(object, settings);
         }
         
     });

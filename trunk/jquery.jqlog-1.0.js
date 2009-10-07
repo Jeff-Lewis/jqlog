@@ -43,16 +43,16 @@
         */
         log: function(object, options) {
         
-            if (jQuery.jqlog.enabled) {
+            if (this.enabled) {
             
-                var entry = jQuery.extend({}, jQuery.jqlog.entryDefaults, {
+                var entry = jQuery.extend({}, this.entryDefaults, {
                     timestamp: new Date(),
                     message: object
                 }, options);
                 
                 // Log the entry with each of the registered targets.
-                for(var t in jQuery.jqlog.targets) {
-                    var target = jQuery.jqlog.targets[t];
+                for(var t in this.targets) {
+                    var target = this.targets[t];
                     if (target.log) {
                         try {
                             target.log(entry);
@@ -70,7 +70,10 @@
         */
         entryDefaults: {
             timestamp: null,
-            message: ""
+            message: "",
+            toString: function() {
+                return this.message.toString();
+            }
         },
         
         /*
