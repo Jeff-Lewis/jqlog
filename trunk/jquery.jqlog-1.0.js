@@ -13,10 +13,7 @@
 (function($) {
 
     // Create the jqlog namespace.
-    jQuery.extend({ jqlog: {} });
-
-    // Define the jqlog namespace.
-    jQuery.extend(jQuery.jqlog, {
+    jQuery.extend({ jqlog: {
         
         version: "1.0",
         
@@ -50,7 +47,6 @@
             
                 var entry = jQuery.extend({}, jQuery.jqlog.entryDefaults, {
                     timestamp: new Date(),
-                    level: "debug",
                     message: object
                 }, options);
                 
@@ -68,74 +64,13 @@
                 }
             }
         },        
-
-        /*
-        Logs an infomation object with all registered log targets.
-        
-        Parameters:
-           object  -   The information object to be logged.
-           options -   Logging options passed to log targets
-        
-        Options:
-           level   -   Logging level.  Default value is "info".
-        
-        Usage: 
-           $.jqlog.info("Information");
-        */        
-        info: function(object, options) { 
-            var settings = jQuery.extend({
-                level: "info"
-            }, options);
-            jQuery.jqlog.log(object, settings);
-        },
-        
-        /*
-        Logs a warning object with all registered log targets.
-        
-        Parameters:
-           object  -   The wanring object to be logged.
-           options -   Logging options passed to log targets
-        
-        Options:
-           level   -   Logging level.  Default value is "warn".
-        
-        Usage: 
-           $.jqlog.warn("Warning");
-        */         
-        warn: function(object, options) {    
-            var settings = jQuery.extend({
-                level: "warn"
-            }, options);
-            jQuery.jqlog.log(object, settings);
-        },
-
-        /*
-        Logs an error object with all registered log targets.
-        
-        Parameters:
-           object  -   The error object to be logged.
-           options -   Logging options passed to log targets
-        
-        Options:
-           level   -   Logging level.  Default value is "error".
-        
-        Usage: 
-           $.jqlog.error("Error");
-        */         
-        error: function(object, options) {    
-            var settings = jQuery.extend({
-                level: "error"
-            }, options);
-            jQuery.jqlog.log(object, settings);
-        },
         
         /*
         Default log entry structure.
         */
         entryDefaults: {
             timestamp: null,
-            level: "",
-            message: "blah"
+            message: ""
         },
         
         /*
@@ -145,7 +80,7 @@
             name: "",
             log: function() {}
         }
-    });
+    }});
     
     jQuery.fn.extend({
     
