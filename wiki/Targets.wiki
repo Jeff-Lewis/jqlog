@@ -1,19 +1,24 @@
-Defines the log targets provided with jqlog.
+#summary Defines the log targets provided with jqlog.
+#labels Featured
 
 == Alert ==
 
-...
+The alert log target plugin is the simplest log target available and just displays each log entry using the browser's alert box.
+
+The alert log target has been tested on IE8, Firefox 3.5 and Safari 4.
 
 == Console ==
 
-...
+The console log target logs entries using the `window.console` object.  If the `window.console` object is not available it does nothing.
+
+The console log target has been tested on IE8, Firefox 3.5 and Safari 4.
 
 == Creating your own log target ==
 
 A log target should extend the `jqlog.targetDefaults` object.  This will mean that your target will pick up all the jqlog default settings and any additional ones set by other plugins.
 
 {{{
-jQuery.extend({}, jQuery.jqlog.targetDefaults, { name: "target", ... });
+var target = jQuery.extend({}, jQuery.jqlog.targetDefaults, { name: "target", ... });
 }}}
 
 To register your log target with jqlog you just need to add it to the targets array.  The array is indexed by log target name.  
