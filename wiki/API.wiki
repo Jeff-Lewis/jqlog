@@ -1,13 +1,13 @@
 #summary jqlog API.
 
-= Introduction =
+== Properties ==
 
-Add your content here.
+{{{
+$.jqlog.enabled
+}}}
 
+== Functions ==
 
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+{{{
+$.jqlog.log(object, options)
+}}}
