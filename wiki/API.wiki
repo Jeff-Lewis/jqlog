@@ -4,8 +4,36 @@
 
 === $.jqlog.enabled ===
 
-* Gets or sets a Boolean value indicating whether or not logging is enabled.  The default value is `false`.
+  * Gets or sets a Boolean value indicating whether or not logging is enabled.  The default value is `false`.
+
+=== $.jqlog.targets ===
+
+  * Gets an array of the currently registered log targets indexed by log target name.  All log target objects must implement a `log` function that accepts a log entry object.
+
+=== $jqlog.entryDefaults ===
+
+  * Gets of sets the default log entry structure.
+
+{{{
+entryDefaults: {
+    timestamp: Date,
+    message: String
+}
+}}}
+
+=== $jqlog.targetDefaults ===
+
+  * Gets of sets the default log target structure.
+
+{{{
+targetDefaults: {
+    name: String,
+    log: function(entry)
+}
+}}}
 
 == Functions ==
 
 === $.jqlog.log(object, options) ===
+
+  * Logs an object with all registered log targets.
