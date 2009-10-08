@@ -4,6 +4,8 @@
 
 === $.jqlog.enabled ===
 
+Gets or sets a Boolean value indicating whether or not logging is enabled.  The default value is 'false'.
+
 == Functions ==
 
 === $.jqlog.log(object, options) ===
