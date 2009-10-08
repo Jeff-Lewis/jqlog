@@ -14,7 +14,7 @@
 
   * Gets of sets the default log entry structure.
 
-{{{
+  {{{
 entryDefaults: {
     timestamp: Date,
     message: String
