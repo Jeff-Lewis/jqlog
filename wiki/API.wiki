@@ -2,12 +2,8 @@
 
 == Properties ==
 
-{{{
-$.jqlog.enabled
-}}}
+=== $.jqlog.enabled ===
 
 == Functions ==
 
-{{{
-$.jqlog.log(object, options)
-}}}
+=== $.jqlog.log(object, options) ===
