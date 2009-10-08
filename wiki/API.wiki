@@ -17,9 +17,12 @@
   {{{
 entryDefaults: {
     timestamp: Date,
+    level: String,
     message: String
 }
 }}}
+
+_Note that the level property is only available if the 'log level' plugin is included on the page._
 
 === $jqlog.targetDefaults ===
 
@@ -37,3 +40,61 @@ targetDefaults: {
 === $.jqlog.log(object, options) ===
 
   * Logs an object with all registered log targets.
+
+*Arguments*
+  * `object`  - The object to log.
+  * `options` - An object that is merged with the `entryDefaults` object to form the log entry object that gets passed to each log target.  There are no options that that control the way the log function operates, instead this argument is intended to provide a way of overriding properties on the `entryDefaults` object.
+
+*Usage*
+
+{{{
+$.jqlog.log("Log entry", options);
+}}}
+
+=== $.jqlog.info(object, options) ===
+
+  * Logs an infomation object with all registered log targets.
+
+*Arguments*
+  * `object`  - The information object to log.
+  * `options` - An object that is merged with the `entryDefaults` object to form the log entry object that gets passed to each log target.  There are no options that that control the way the info function operates, instead this argument is intended to provide a way of overriding properties on the `entryDefaults` object.
+
+*Usage*
+
+{{{
+$.jqlog.info("Information entry", options);
+}}}
+
+_Note that the info function is only available if the 'log level' plugin is included on the page._
+
+=== $.jqlog.warn(object, options) ===
+
+  * Logs a warning object with all registered log targets.
+
+*Arguments*
+  * `object`  - The warning object to log.
+  * `options` - An object that is merged with the `entryDefaults` object to form the log entry object that gets passed to each log target.  There are no options that that control the way the warn function operates, instead this argument is intended to provide a way of overriding properties on the `entryDefaults` object.
+
+*Usage*
+
+{{{
+$.jqlog.warn("Warning entry", options);
+}}}
+
+_Note that the warn function is only available if the 'log level' plugin is included on the page._
+
+=== $.jqlog.error(object, options) ===
+
+  * Logs an error object with all registered log targets.
+
+*Arguments*
+  * `object`  - The error object to log.
+  * `options` - An object that is merged with the `entryDefaults` object to form the log entry object that gets passed to each log target.  There are no options that that control the way the error function operates, instead this argument is intended to provide a way of overriding properties on the `entryDefaults` object.
+
+*Usage*
+
+{{{
+$.jqlog.error("Error entry", options);
+}}}
+
+_Note that the error function is only available if the 'log level' plugin is included on the page._
