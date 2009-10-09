@@ -15,7 +15,7 @@ The alert log target has been tested on IE8, Firefox 3.5 and Safari 4.
 
 == Console ==
 
-The console log target logs entries using the `window.console` object.  If the `window.console` object is not available it does nothing.
+The console log target logs entries using the `window.console` object.  If the `window.console` object is not available it tries to log to the `window.firebug.d.console` object (provided by Firebug Lite).  If neither object is available it does nothing.
 
 To use the console log target just include the script file on your page after jqlog.
 
