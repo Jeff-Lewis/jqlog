@@ -30,7 +30,8 @@
         Parameters:
            entry -   The entry to log.
         */        
-        log: function (entry) {            
+        log: function (entry) {
+            // Check for the browser console object...
             if (window.console) {
                 switch(entry.level) {
                     case "info":
@@ -44,6 +45,22 @@
                         break;
                     default:
                         console.log(entry.message);
+                }
+            }
+            // Check for firebug lite...
+            else if (window.firebug) {
+                switch(entry.level) {
+                    case "info":
+                        firebug.d.console.info(entry.message);
+                        break;
+                    case "warn":
+                        firebug.d.console.warn(entry.message);
+                        break;
+                    case "error":
+                        firebug.d.console.error(entry.message);
+                        break;
+                    default:
+                        firebug.d.console.log(entry.message);
                 }
             }
         }
