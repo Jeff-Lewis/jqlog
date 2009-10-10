@@ -45,14 +45,14 @@
         
             if (this.enabled) {
             
-                var entry = jQuery.extend({}, this.entryDefaults, {
+                var t, target, entry = jQuery.extend({}, this.entryDefaults, {
                     timestamp: new Date(),
                     message: object
                 }, options);
                 
                 // Log the entry with each of the registered targets.
-                for(var t in this.targets) {
-                    var target = this.targets[t];
+                for(t in this.targets) {
+                    target = this.targets[t];
                     if (target.log) {
                         try {
                             target.log(entry);
