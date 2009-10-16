@@ -1,5 +1,5 @@
 /*
- * jQuery.jqlog 1.0
+ * jQuery.jqlog X.X
  *
  * A logging framework plugin for jQuery.
  *
@@ -15,7 +15,7 @@
     // Create the jqlog namespace.
     jQuery.extend({ jqlog: {
         
-        version: "1.0",
+        version: "X.X",
         
         /*
         Indicates whether or not logging is enabled.  Default is false.
