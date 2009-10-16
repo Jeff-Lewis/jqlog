@@ -1,5 +1,5 @@
 /*
- * jqlog.levels 1.0
+ * jqlog.levels X.X
  *
  * A logging level plugin for jqlog.
  *

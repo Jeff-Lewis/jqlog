@@ -1,5 +1,5 @@
 /*
- * jqlog.console 1.0
+ * jqlog.console X.X
  *
  * A log target for the jqlog framework that uses the console object.
  *
@@ -22,7 +22,7 @@
         /* 
         Target version.
         */
-        version: "1.0",
+        version: "X.X",
         
         /*
         Logs a entry to the console if available.
