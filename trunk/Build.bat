@@ -1,6 +1,8 @@
 REM Define variables.
 SET version=1.1
 SET build=Build
+SET plugins=Plugins
+SET targets=Targets
 
 REM Create the build directory.
 IF EXIST %build% RMDIR %build% /S /Q
@@ -8,9 +10,9 @@ MKDIR %build%
 
 REM Version all the necessary files.
 CALL BatchSubstitute "X.X" "%version%" jquery.jqlog.js > %build%\jquery.jqlog-%version%.js
-CALL BatchSubstitute "X.X" "%version%" jqlog.levels.js > %build%\jqlog.levels-%version%.js
-CALL BatchSubstitute "X.X" "%version%" jqlog.alert.js > %build%\jqlog.alert-%version%.js
-CALL BatchSubstitute "X.X" "%version%" jqlog.console.js > %build%\jqlog.console-%version%.js
+CALL BatchSubstitute "X.X" "%version%" %plugins%\jqlog.levels.js > %build%\jqlog.levels-%version%.js
+CALL BatchSubstitute "X.X" "%version%" %targets%\jqlog.alert.js > %build%\jqlog.alert-%version%.js
+CALL BatchSubstitute "X.X" "%version%" %targets%\jqlog.console.js > %build%\jqlog.console-%version%.js
 
 REM Merge core, levels and console files to make a custom jqlog package. 
 COPY %build%\jquery.jqlog-%version%.js /B + %build%\jqlog.levels-%version%.js /B + %build%\jqlog.console-%version%.js /B %build%\jquery.jqlog-%version%.custom.js
