@@ -12,21 +12,21 @@
  */ 
 (function($) {
 
-    // Create the jqlog namespace.
-    jQuery.extend({ jqlog: {
+    // Create the jqlog namespace and the JqLogger singleton class.
+    jQuery.extend({ jqlog: new function JqLogger() {
         
-        version: "X.X",
+        this.version = "X.X";
         
         /*
         Indicates whether or not logging is enabled.  Default is false.
         */
-        enabled: false,
+        this.enabled = false;
         
         /*
         Stores the currently registered log targets.  All log target objects must implement a 
         log target function that accepts a log entry object.        
         */
-        targets: [],
+        this.targets = [];
         
         /*
         Logs an object with all registered log targets.
@@ -41,7 +41,7 @@
         Usage: 
            $.jqlog.log("Message");
         */
-        log: function(object, options) {
+        this.log = function log(object, options) {
         
             if (this.enabled) {
             
@@ -63,26 +63,26 @@
                     }
                 }
             }
-        },        
+        };
         
         /*
         Default log entry structure.
         */
-        entryDefaults: {
-            timestamp: null,
-            message: "",
-            toString: function() {
+        this.entryDefaults = new function JqLogEntry() {
+            this.timestamp = new Date();
+            this.message = "";
+            this.toString = function toString() {
                 return this.message.toString();
             }
-        },
+        };
         
         /*
         Default target structure.
         */
-        targetDefaults: {
-            name: "",
-            log: function() {}
-        }
+        this.targetDefaults = new function JqLogTarget() {
+            this.name = "";
+            this.log = function log() {};
+        };
     }});
     
     jQuery.fn.extend({
