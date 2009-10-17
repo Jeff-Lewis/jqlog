@@ -79,9 +79,6 @@
         this.entryDefaults = new function JqLogEntry() {
             this.timestamp = new Date();
             this.message = "";
-            this.toString = function toString() {
-                return this.message.toString();
-            }
         };
         
         /*
@@ -89,7 +86,7 @@
         */
         this.targetDefaults = new function JqLogTarget() {
             this.name = "";
-            this.log = function log() {};
+            this.log = function log(entry) {};
         };
     }});
     
