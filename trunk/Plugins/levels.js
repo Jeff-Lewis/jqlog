@@ -28,7 +28,7 @@
         Usage: 
            $.jqlog.info("Information");
         */        
-        info: function(object, options) { 
+        info: function info(object, options) { 
             var settings = jQuery.extend({
                 level: "info"
             }, options);
@@ -48,7 +48,7 @@
         Usage: 
            $.jqlog.warn("Warning");
         */         
-        warn: function(object, options) {    
+        warn: function warn(object, options) {    
             var settings = jQuery.extend({
                 level: "warn"
             }, options);
@@ -68,7 +68,7 @@
         Usage: 
            $.jqlog.error("Error");
         */         
-        error: function(object, options) {    
+        error: function error(object, options) {    
             var settings = jQuery.extend({
                 level: "error"
             }, options);
