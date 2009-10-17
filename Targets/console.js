@@ -30,7 +30,7 @@
         Parameters:
            entry -   The entry to log.
         */        
-        log: function (entry) {
+        log: function log(entry) {
             // Check for the browser console object...
             if (window.console) {
                 switch(entry.level) {
