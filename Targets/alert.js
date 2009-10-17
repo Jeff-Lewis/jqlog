@@ -1,5 +1,5 @@
 /*
- * jqlog.alert X.X
+ * jqlog.target.alert X.X
  *
  * A log target for the jqlog framework that uses the brower alert window.
  *
