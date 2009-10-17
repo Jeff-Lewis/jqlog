@@ -15,16 +15,24 @@
     // Create the jqlog namespace and the JqLogger singleton class.
     jQuery.extend({ jqlog: new function JqLogger() {
         
+        // Private enabled flag.
+        var _enabled = false;
+        
         this.version = "X.X";
         
         /*
         Indicates whether or not logging is enabled.  Default is false.
         */
-        this.enabled = false;
+        this.enabled = function enabled(enable) {
+            if (enable != undefined) {
+                this._enabled = enable;
+            }
+            return this._enabled;
+        };
         
         /*
         Stores the currently registered log targets.  All log target objects must implement a 
-        log target function that accepts a log entry object.        
+        log target function that accepts a log entry object.
         */
         this.targets = [];
         
@@ -43,7 +51,7 @@
         */
         this.log = function log(object, options) {
         
-            if (this.enabled) {
+            if (this.enabled()) {
             
                 var t, target, entry = jQuery.extend({}, this.entryDefaults, {
                     timestamp: new Date(),
