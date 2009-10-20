@@ -10,56 +10,72 @@
  *
  * http://code.google.com/p/jqlog/
  */ 
-(function($) {
 
-    // Create the jqlog namespace and the JqLogger singleton class.
-    jQuery.extend({ jqlog: new function JqLogger() {
+// Create the jqlog namespace.
+jQuery.jqlog = {
+    
+    // Private enabled flag.
+    _enabled: false,
+    
+    version: "X.X",
+
+    /*
+    Stores the currently registered log targets.  All log target objects must implement a 
+    log target function that accepts a log entry object.
+    */
+    targets: [],
+    
+    /*
+    Default log entry structure.
+    */
+    entryDefaults: {
+        timestamp: null,
+        message: ""
+    },
+    
+    /*
+    Default target structure.
+    */
+    targetDefaults: {
+        name: "",
+        log: function(entry) {}
+    },    
+    
+    /*
+    Indicates whether or not logging is enabled.  Default is false.
+    */
+    enabled: function(enable) {
+        if (enable !== undefined) {
+            this._enabled = enable;
+        }
+        return this._enabled;
+    },    
+    
+    /*
+    Logs an object with all registered log targets.
+    
+    Parameters:
+       object  -   The object to be logged.
+       options -   Logging options passed to log targets
+    
+    Options:
+       level   -   Logging level.  Default value is "debug".
+    
+    Usage: 
+       $.jqlog.log("Message");
+    */
+    log: function(object, options) {
+    
+        if (this.enabled()) {
         
-        // Private enabled flag.
-        var _enabled = false;
-        
-        this.version = "X.X";
-        
-        /*
-        Indicates whether or not logging is enabled.  Default is false.
-        */
-        this.enabled = function enabled(enable) {
-            if (enable != undefined) {
-                this._enabled = enable;
-            }
-            return this._enabled;
-        };
-        
-        /*
-        Stores the currently registered log targets.  All log target objects must implement a 
-        log target function that accepts a log entry object.
-        */
-        this.targets = [];
-        
-        /*
-        Logs an object with all registered log targets.
-        
-        Parameters:
-           object  -   The object to be logged.
-           options -   Logging options passed to log targets
-        
-        Options:
-           level   -   Logging level.  Default value is "debug".
-        
-        Usage: 
-           $.jqlog.log("Message");
-        */
-        this.log = function log(object, options) {
-        
-            if (this.enabled()) {
+            var t, target, entry = jQuery.extend({}, this.entryDefaults, {
+                timestamp: new Date(),
+                message: object
+            }, options);          
             
-                var t, target, entry = jQuery.extend({}, this.entryDefaults, {
-                    timestamp: new Date(),
-                    message: object
-                }, options);
-                
-                // Log the entry with each of the registered targets.
-                for(t in this.targets) {
+            // Log the entry with each of the registered targets.
+            for(t in this.targets) {
+                if (this.targets.hasOwnProperty(t)) {
                     target = this.targets[t];
                     if (target.log) {
                         try {
@@ -71,42 +87,22 @@
                     }
                 }
             }
-        };
-        
-        /*
-        Default log entry structure.
-        */
-        this.entryDefaults = new function JqLogEntry() {
-            this.timestamp = new Date();
-            this.message = "";
-        };
-        
-        /*
-        Default target structure.
-        */
-        this.targetDefaults = new function JqLogTarget() {
-            this.name = "";
-            this.log = function log(entry) {};
-        };
-    }});
-    
-    jQuery.fn.extend({
-    
-        /*
-        Logs a DOM object with all registered log targets.
-        
-        Parameters:
-           options -   Logging options passed to log targets
-        
-        Options:
-           level   -   Logging level.  Default value is "debug".
-        
-        Usage: 
-           $("div").log();
-        */    
-        log: function(options) {
-            return this.each(function() { jQuery.jqlog.log(this, options); });
         }
-    });
+    }
+};
 
-})(jQuery);
+/*
+Logs a DOM object with all registered log targets.
+
+Parameters:
+   options -   Logging options passed to log targets
+
+Options:
+   level   -   Logging level.  Default value is "debug".
+
+Usage: 
+   $("div").log();
+*/
+jQuery.fn.log = function(options) {
+    return this.each(function() { jQuery.jqlog.log(this, options); });
+};
