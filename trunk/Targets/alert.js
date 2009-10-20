@@ -10,29 +10,25 @@
  *
  * http://code.google.com/p/jqlog/
  */ 
-(function($) {
+jQuery.jqlog.targets.alert = jQuery.extend({}, jQuery.jqlog.targetDefaults, {
 
-    jQuery.jqlog.targets["alert"] = jQuery.extend({}, jQuery.jqlog.targetDefaults, {
+    /*
+    Target name.
+    */
+    name: "alert",        
     
-        /*
-        Target name.
-        */
-        name: "alert",        
-        
-        /* 
-        Target version.
-        */
-        version: "X.X",
-        
-        /*
-        Logs a entry using the alert window.
-        
-        Parameters:
-           entry -   The entry to log.
-        */        
-        log: function log(entry) {
-            alert(entry.message);
-        }
-    });
-
-})(jQuery);
+    /* 
+    Target version.
+    */
+    version: "X.X",
+    
+    /*
+    Logs a entry using the alert window.
+    
+    Parameters:
+       entry -   The entry to log.
+    */        
+    log: function log(entry) {
+        alert(entry.message);
+    }
+});

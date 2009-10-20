@@ -17,7 +17,7 @@
  * Depends on jquery.cookie.js.
  */ 
 jQuery.jqlog.enabled = function enabled(enable) {
-    if (enable != undefined) {
+    if (enable !== undefined) {
         jQuery.cookie("jqlogEnabled", enable, { expires: 50 });
     }
     return Boolean(jQuery.cookie("jqlogEnabled"));
