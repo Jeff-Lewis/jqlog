@@ -3,15 +3,11 @@
 
 == Properties ==
 
-=== $.jqlog.enabled ===
-
-  * Gets or sets a Boolean value indicating whether or not logging is enabled.  The default value is `false`.
-
 === $.jqlog.targets ===
 
   * Gets an array of the currently registered log targets indexed by log target name.  All log target objects must implement a `log` function that accepts a log entry object.
 
-=== $jqlog.entryDefaults ===
+=== $.jqlog.entryDefaults ===
 
   * Gets of sets the default log entry structure.
 
@@ -37,6 +33,15 @@ targetDefaults: {
 }}}
 
 == Functions ==
+
+=== $.jqlog.enabled(enable) ===
+
+  * Gets or sets a Boolean value indicating whether or not logging is enabled.  The default value is `false`.
+
+*Arguments*
+  * `enable`  - Optional argument to enable or disable logging.
+
+_Including the cookie plugin persists the enabled flag to a cookie.  This means that logging can be left disabled on document ready to minimise the performance impact for users, and then turned on when required._
 
 === $.jqlog.log(object, options) ===
 
