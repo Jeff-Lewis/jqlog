@@ -21,7 +21,7 @@ entryDefaults: {
 
 _Note that the level property is only available if the 'log level' plugin is included on the page._
 
-=== $jqlog.targetDefaults ===
+=== $.jqlog.targetDefaults ===
 
   * Gets of sets the default log target structure.
 
