@@ -10,6 +10,9 @@
         
         (function($) {
             $(document).ready(function() {
+                if (!Boolean(jQuery.cookie("jqlogEnabled"))) {
+                    $.jqlog.log("Should not be logged");
+                }
                 $.jqlog.enabled(true);
                 $.jqlog.log("Log entry");
                 $.jqlog.info("Information entry");
