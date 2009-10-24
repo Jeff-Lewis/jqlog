@@ -7,6 +7,7 @@
         
         (function($) {
             $(document).ready(function() {
+                $.jqlog.log("Should not be logged");
                 $.jqlog.enabled(true);
                 $.jqlog.log("Log entry");
                 $("#Inner").log();
