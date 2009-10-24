@@ -14,6 +14,7 @@ CALL BatchSubstitute "X.X" "%version%" "%plugins%\levels.js" > "%output%\jqlog.l
 CALL BatchSubstitute "X.X" "%version%" "%plugins%\cookie.js" > "%output%\jqlog.cookie-%version%.js"
 CALL BatchSubstitute "X.X" "%version%" "%targets%\alert.js" > "%output%\jqlog.target.alert-%version%.js"
 CALL BatchSubstitute "X.X" "%version%" "%targets%\console.js" > "%output%\jqlog.target.console-%version%.js"
+CALL BatchSubstitute "X.X" "%version%" "ReadMe.txt" > "%output%\ReadMe.txt"
 
 REM Merge core, levels and console files to make a custom jqlog package. 
 COPY "%output%\jquery.jqlog-%version%.js" /B + "%output%\jqlog.levels-%version%.js" /B + "%output%\jqlog.cookie-%version%.js" /B + "%output%\jqlog.target.console-%version%.js" /B "%output%\jquery.jqlog-%version%.custom.js"
