@@ -29,6 +29,6 @@ jQuery.jqlog.targets.alert = jQuery.extend({}, jQuery.jqlog.targetDefaults, {
        entry -   The entry to log.
     */        
     log: function log(entry) {
-        alert(entry.message);
+        alert(entry.format());
     }
 });

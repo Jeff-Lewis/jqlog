@@ -30,7 +30,14 @@ jQuery.jqlog = {
     */
     entryDefaults: {
         timestamp: null,
-        message: ""
+        message: "",
+        format: function() {
+            var msg = this.message;
+            if (typeof this.message != "object") {
+                msg = "[" + this.timestamp.toLocaleTimeString() + "] " + this.message.toString();
+            }
+            return msg;
+        }
     },
     
     /*
