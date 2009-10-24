@@ -30,7 +30,7 @@ jQuery.jqlog.targets.console = jQuery.extend({}, jQuery.jqlog.targetDefaults, {
     */        
     log: function log(entry) {
         
-        var msg = entry.message;
+        var msg = entry.format();
         
         // Check for the browser console object...                
         if (window.console) {
