@@ -17,8 +17,22 @@
  * Depends on jquery.cookie.js.
  */ 
 jQuery.jqlog.enabled = function enabled(enable) {
-    if (enable !== undefined) {
-        jQuery.cookie("jqlogEnabled", enable, { expires: 50 });
+    var enabled = enable;
+    if (enabled !== undefined) {
+        // Save the new value in the cookie.
+        jQuery.cookie("jqlogEnabled", enabled, { expires: 50 });
+        this._enabled = enabled;
     }
-    return Boolean(jQuery.cookie("jqlogEnabled"));
+    else {
+        enabled = this._enabled;
+        if (enabled === undefined) {
+            // Get the value from the cookie.
+            enabled = Boolean(jQuery.cookie("jqlogEnabled"));
+            this._enabled = enabled;
+        }
+    }
+    return enabled;
 };
+
+// Reset the enabled flag so we can tell if it has been set or not.
+jQuery.jqlog._enabled = undefined; 
