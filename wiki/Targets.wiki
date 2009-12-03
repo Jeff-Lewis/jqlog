@@ -17,11 +17,7 @@ The alert log target has been tested on IE8, Firefox 3.5 and Safari 4.
 
 The console log target logs entries using the `window.console` object.  If the `window.console` object is not available it tries to log to the `window.firebug.d.console` object (provided by Firebug Lite).  If neither object is available it does nothing.
 
-To use the console log target just include the script file on your page after jqlog.
-
-{{{
-<script type="text/javascript" src="jqlog.console-1.0.js"></script>
-}}}
+The console log target is the default log target used by jqlog and is included as part of the main script file.
 
 The console log target has been tested on IE8, Firefox 3.5 and Safari 4.
 
@@ -31,6 +27,14 @@ A log target should extend the `jqlog.targetDefaults` object.  This will mean th
 
 {{{
 var target = jQuery.extend({}, jQuery.jqlog.targetDefaults, { name: "target", ... });
+}}}
+
+At a minimum, a target must implement a log function that accepts as its first parameter a log entry object.
+
+}}}
+function log(entry) {
+...
+}
 }}}
 
 To register your log target with jqlog you just need to add it to the targets array.  The array is indexed by log target name.  
