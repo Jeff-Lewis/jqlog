@@ -19,8 +19,6 @@ entryDefaults: {
 }
 }}}
 
-_Note that the level property is only available if the 'log level' plugin is included on the page._
-
 === $.jqlog.targetDefaults ===
 
   * Gets of sets the default log target structure.
@@ -71,8 +69,6 @@ $.jqlog.log("Log entry", options);
 $.jqlog.info("Information entry", options);
 }}}
 
-_Note that the info function is only available if the 'log level' plugin is included on the page._
-
 === $.jqlog.warn(object, options) ===
 
   * Logs a warning object with all registered log targets.
@@ -87,8 +83,6 @@ _Note that the info function is only available if the 'log level' plugin is incl
 $.jqlog.warn("Warning entry", options);
 }}}
 
-_Note that the warn function is only available if the 'log level' plugin is included on the page._
-
 === $.jqlog.error(object, options) ===
 
   * Logs an error object with all registered log targets.
@@ -102,5 +96,3 @@ _Note that the warn function is only available if the 'log level' plugin is incl
 {{{
 $.jqlog.error("Error entry", options);
 }}}
-
-_Note that the error function is only available if the 'log level' plugin is included on the page._
