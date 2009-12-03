@@ -31,7 +31,7 @@ var target = jQuery.extend({}, jQuery.jqlog.targetDefaults, { name: "target", ..
 
 At a minimum, a target must implement a log function that accepts as its first parameter a log entry object.
 
-}}}
+{{{
 function log(entry) {
 ...
 }
