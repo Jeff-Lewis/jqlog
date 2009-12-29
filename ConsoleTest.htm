@@ -28,6 +28,13 @@
                 }
                 
                 $("#Button").bind("click", function(event) { $.jqlog.log("Button Clicked"); return true; });
+                
+                $.jqlog.level($.jqlog.levels.warn);
+                $.jqlog.log("Should not be logged");
+                $.jqlog.info("Should not be logged");
+                $.jqlog.warn("Warning entry");
+                $.jqlog.error("Error entry");
+                
             });
         })(jQuery);
         

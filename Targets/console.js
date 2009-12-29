@@ -35,13 +35,13 @@ jQuery.jqlog.targets.console = jQuery.extend({}, jQuery.jqlog.targetDefaults, {
         // Check for the browser console object...                
         if (window.console) {
             switch(entry.level) {
-                case "info":
+                case jQuery.jqlog.levels.info:
                     console.info(msg);
                     break;
-                case "warn":
+                case jQuery.jqlog.levels.warn:
                     console.warn(msg);
                     break;
-                case "error":
+                case jQuery.jqlog.levels.error:
                     console.error(msg);
                     break;
                 default:
@@ -51,13 +51,13 @@ jQuery.jqlog.targets.console = jQuery.extend({}, jQuery.jqlog.targetDefaults, {
         // Check for firebug lite...
         else if (window.firebug) {
             switch(entry.level) {
-                case "info":
+                case jQuery.jqlog.levels.info:
                     firebug.d.console.info(msg);
                     break;
-                case "warn":
+                case jQuery.jqlog.levels.warn:
                     firebug.d.console.warn(msg);
                     break;
-                case "error":
+                case jQuery.jqlog.levels.error:
                     firebug.d.console.error(msg);
                     break;
                 default:
