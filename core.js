@@ -80,21 +80,36 @@ jQuery.jqlog = {
                 message: object
             }, options);          
             
-            // Log the entry with each of the registered targets.
-            for(t in this.targets) {
-                if (this.targets.hasOwnProperty(t)) {
-                    target = this.targets[t];
-                    if (target.log) {
-                        try {
-                            target.log(entry);
-                        } 
-                        catch(err) {
-                            // Ignore any errors and carry on logging!
+            if (!this.isExcluded(entry)) {
+                // Log the entry with each of the registered targets.
+                for(t in this.targets) {
+                    if (this.targets.hasOwnProperty(t)) {
+                        target = this.targets[t];
+                        if (target.log) {
+                            try {
+                                target.log(entry);
+                            } 
+                            catch(err) {
+                                // Ignore any errors and carry on logging!
+                            }
                         }
                     }
                 }
             }
         }
+    },
+    
+    /*
+    Determines if a log entry will be excluded from being logged.
+    
+    Parameters:
+       entry  -   The object to be logged.
+    
+    Usage: 
+       $.jqlog.isExcluded(entry);
+    */
+    isExcluded: function(entry) {
+        return false;
     }
 };
 
