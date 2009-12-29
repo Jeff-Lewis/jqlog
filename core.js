@@ -34,7 +34,7 @@ jQuery.jqlog = {
         format: function() {
             var msg = this.message;
             if (typeof this.message != "object") {
-                msg = "[" + this.timestamp.toLocaleTimeString() + "] " + this.message.toString();
+                msg = "[" + this.timestamp.getDate() + "/" + (this.timestamp.getMonth() + 1) + "/" + this.timestamp.getFullYear() + " " + this.timestamp.getHours() + ":" + this.timestamp.getMinutes() + ":" + this.timestamp.getSeconds() + "." + this.timestamp.getMilliseconds() + "] " + this.message.toString();
             }
             return msg;
         }
