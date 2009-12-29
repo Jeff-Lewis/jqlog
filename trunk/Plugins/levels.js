@@ -10,66 +10,108 @@
  *
  * http://code.google.com/p/jqlog/
  */ 
+jQuery.extend(jQuery.jqlog, {
 
- /*
-Logs an infomation object with all registered log targets.
+    // Private level exclusion value.
+    _level: null,
+    
+    /*
+    Defines the logging levels available.
+    */
+    levels: {
+        debug: 0,
+        info: 1,
+        warn: 2,
+        error: 3
+    },
+    
+    /*
+    Gets or sets the level exclusion value.  Default is null (no exclusion is applied).
+    */
+    level: function(level) {
+        if (level !== undefined) {
+            this._level = level;
+        }
+        return this._level;
+    },     
+ 
+    /*
+    Determines if a log entry will be excluded from being logged.
 
-Parameters:
-   object  -   The information object to be logged.
-   options -   Logging options passed to log targets
+    Parameters:
+       entry  -   The object to be logged.
 
-Options:
-   level   -   Logging level.  Default value is "info".
+    Usage: 
+       $.jqlog.isExcluded(entry);
+    */
+    isExcluded: function(entry) {
+        var excluded = false;
+        if(this._level && entry.level !== undefined) {
+            excluded = this._level > entry.level;
+        }
+        return excluded;
+    },
 
-Usage: 
-   $.jqlog.info("Information");
-*/
-jQuery.jqlog.info = function(object, options) { 
-    var settings = jQuery.extend({
-        level: "info"
-    }, options);
-    this.log(object, settings);
-};
-        
-/*
-Logs a warning object with all registered log targets.
+    /*
+    Logs an infomation object with all registered log targets.
 
-Parameters:
-   object  -   The wanring object to be logged.
-   options -   Logging options passed to log targets
+    Parameters:
+       object  -   The information object to be logged.
+       options -   Logging options passed to log targets
 
-Options:
-   level   -   Logging level.  Default value is "warn".
+    Options:
+       level   -   Logging level.  Default value is 1 (info).
 
-Usage: 
-   $.jqlog.warn("Warning");
-*/         
-jQuery.jqlog.warn = function(object, options) {    
-    var settings = jQuery.extend({
-        level: "warn"
-    }, options);
-    this.log(object, settings);
-};
+    Usage: 
+       $.jqlog.info("Information");
+    */
+    info: function(object, options) { 
+        var settings = jQuery.extend({
+            level: this.levels.info
+        }, options);
+        this.log(object, settings);
+    },
+            
+    /*
+    Logs a warning object with all registered log targets.
 
-/*
-Logs an error object with all registered log targets.
+    Parameters:
+       object  -   The wanring object to be logged.
+       options -   Logging options passed to log targets
 
-Parameters:
-   object  -   The error object to be logged.
-   options -   Logging options passed to log targets
+    Options:
+       level   -   Logging level.  Default value is 2 (warning).
 
-Options:
-   level   -   Logging level.  Default value is "error".
+    Usage: 
+       $.jqlog.warn("Warning");
+    */         
+    warn: function(object, options) {    
+        var settings = jQuery.extend({
+            level: this.levels.warn
+        }, options);
+        this.log(object, settings);
+    },
 
-Usage: 
-   $.jqlog.error("Error");
-*/         
-jQuery.jqlog.error = function(object, options) {    
-    var settings = jQuery.extend({
-        level: "error"
-    }, options);
-    this.log(object, settings);
-};
+    /*
+    Logs an error object with all registered log targets.
+
+    Parameters:
+       object  -   The error object to be logged.
+       options -   Logging options passed to log targets
+
+    Options:
+       level   -   Logging level.  Default value is 3 (error).
+
+    Usage: 
+       $.jqlog.error("Error");
+    */         
+    error: function(object, options) {    
+        var settings = jQuery.extend({
+            level: this.levels.error
+        }, options);
+        this.log(object, settings);
+    }
+});
 
 // Extend the log entry defaults object to include a default log level.
-jQuery.jqlog.entryDefaults.level = "debug";
+jQuery.jqlog.entryDefaults.level = jQuery.jqlog.levels.debug;
