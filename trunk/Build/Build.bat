@@ -1,5 +1,5 @@
 REM Define variables.
-SET version=1.2
+SET version=1.3
 SET output=Release
 SET plugins=..\Plugins
 SET targets=..\Targets
